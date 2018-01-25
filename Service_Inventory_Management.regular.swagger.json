@@ -2,8 +2,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "serviceInventory API designed for ONAP Beijing Release.\nThis API is build from TMF open API16.5 + applied TMF guideline 3.0",
-    "version": "0.1.0_inProgress",
+    "description": "Service Inventory TMF API\nAligned with TMF Guidelines3.0\nUsed in ONAP Beijing",
+    "version": "2.0.0_inProgress",
     "title": "API ServiceInventory"
   },
   
@@ -27,6 +27,93 @@
   ],
   "paths": {
       "/service": {
+      "post": {
+        "tags": [
+           "Service"
+        ],
+        "operationId": "serviceCreate",
+        "summary": "Create a service",
+        "description": "This operation creates a service entity.\nNote: this operation is available only to ADMIN API users\nThe specification document provides the list of mandatory and non mandatory attributes when creating a Service, including any possible rule conditions and applicable default values.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        
+        "parameters": [
+          
+          {
+            "name": "Service",
+            "required": true,
+            "in": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Service"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Service"
+            }
+
+          },
+          "400": {
+            
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "401": {
+            
+            "description": "Unauthorized\n\nList of supported error codes:\n- 40: Missing credentials\n- 41: Invalid credentials\n- 42: Expired credentials",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "403": {
+            
+            "description": "Forbidden\n\nList of supported error codes:\n- 50: Access denied\n- 51: Forbidden requester\n- 52: Forbidden user\n- 53: Too many requests",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "503": {
+            
+            "description": "Service Unavailable\n\nList of supported error codes:\n- 5: The service is temporarily unavailable\n- 6: Orange API is over capacity, retry later !",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      },
       "get": {
         "tags": [
            "Service"
@@ -151,6 +238,182 @@
             "schema": {
               "$ref": "#/definitions/Service"
             }
+
+          },
+          "400": {
+            
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "401": {
+            
+            "description": "Unauthorized\n\nList of supported error codes:\n- 40: Missing credentials\n- 41: Invalid credentials\n- 42: Expired credentials",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "403": {
+            
+            "description": "Forbidden\n\nList of supported error codes:\n- 50: Access denied\n- 51: Forbidden requester\n- 52: Forbidden user\n- 53: Too many requests",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "503": {
+            
+            "description": "Service Unavailable\n\nList of supported error codes:\n- 5: The service is temporarily unavailable\n- 6: Orange API is over capacity, retry later !",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+           "Service"
+        ],
+        "operationId": "servicePatch",
+        "summary": "Patch a service",
+        "description": "This operation allows partial updates of a service entity. Support of json/merge (https://tools.ietf.org/html/rfc7386) is mandatory, support of json/patch (http://tools.ietf.org/html/rfc5789) is optional.\nNote: this operation is available only to ADMIN API users.\nThe specification document provides the list of patchable and non patchable attributes, including constraint rules on their usage.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        
+        "parameters": [
+          
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Service",
+            "required": true,
+            "in": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Service"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Service"
+            }
+
+          },
+          "400": {
+            
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "401": {
+            
+            "description": "Unauthorized\n\nList of supported error codes:\n- 40: Missing credentials\n- 41: Invalid credentials\n- 42: Expired credentials",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "403": {
+            
+            "description": "Forbidden\n\nList of supported error codes:\n- 50: Access denied\n- 51: Forbidden requester\n- 52: Forbidden user\n- 53: Too many requests",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "503": {
+            
+            "description": "Service Unavailable\n\nList of supported error codes:\n- 5: The service is temporarily unavailable\n- 6: Orange API is over capacity, retry later !",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+           "Service"
+        ],
+        "operationId": "serviceDelete",
+        "summary": "Delete a service",
+        "description": "This operation deletes a service entity.\nNote: this operation is available only to ADMIN API users.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        
+        "parameters": [
+          
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
 
           },
           "400": {
