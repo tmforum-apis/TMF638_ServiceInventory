@@ -548,6 +548,10 @@
           "description": "Reference of the service",
               "type": "string"
         },
+        "type": {
+          "description": "Service type",
+              "type": "string"
+        },
         "name": {
           "description": "Name of the service",
               "type": "string"
@@ -592,10 +596,9 @@
           "description": "This is a Boolean attribute that, if TRUE, means that this Service can be changed without affecting any other services",
               "type": "boolean"
         },
-        "orderDate": {
-          "description": "Date when the service was ordered",
-              "type": "string",
-              "format": "date-time"
+        "serviceDate": {
+          "description": "",
+              "type": "string"
         },
         "startDate": {
           "description": "Date when the service starts",
@@ -801,12 +804,16 @@
           "description": "Reference of the supporting resource",
               "type": "string"
         },
-        "name": {
-          "description": "Name of the supporting resource",
+        "role": {
+          "description": "",
               "type": "string"
         },
         "@referredType": {
           "description": "",
+              "type": "string"
+        },
+        "name": {
+          "description": "Name of the supporting resource",
               "type": "string"
         }
       }
