@@ -1055,6 +1055,19 @@
                     "items": {
                         "$ref": "#/definitions/FeatureRelationship"
                     }
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class Extensible name"
                 }
             }
         },
@@ -1333,6 +1346,19 @@
                     "$ref": "#/definitions/OrderItemActionType",
                     "description": "Action of the order item for this service"
                 },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class Extensible name"
+                },
                 "@referredType": {
                     "type": "string",
                     "description": "The actual type of the target instance when needed for disambiguation."
@@ -1516,6 +1542,19 @@
                         "$ref": "#/definitions/ServiceRefOrValue"
                     },
                     "description": "A list of supporting services (SupportingService [*]). A collection of services that support this service (bundling, link CFS to RFS)"
+                }, 
+                "@baseType": {
+                    "type": "string", 
+                    "description": "When sub-classing, this defines the super-class"
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships", 
+                    "format": "uri"
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "When sub-classing, this defines the sub-class entity name"
                 }
             }
         },
@@ -1654,6 +1693,19 @@
                         "$ref": "#/definitions/ServiceRefOrValue"
                     },
                     "description": "A list of supporting services (SupportingService [*]). A collection of services that support this service (bundling, link CFS to RFS)"
+                }, 
+                "@baseType": {
+                    "type": "string", 
+                    "description": "When sub-classing, this defines the super-class"
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships", 
+                    "format": "uri"
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "When sub-classing, this defines the sub-class entity name"
                 }
             }
         },
@@ -1784,6 +1836,19 @@
                         "$ref": "#/definitions/ServiceRefOrValue"
                     },
                     "description": "A list of supporting services (SupportingService [*]). A collection of services that support this service (bundling, link CFS to RFS)"
+                }, 
+                "@baseType": {
+                    "type": "string", 
+                    "description": "When sub-classing, this defines the super-class"
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships", 
+                    "format": "uri"
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "When sub-classing, this defines the sub-class entity name"
                 }
             }
         },
